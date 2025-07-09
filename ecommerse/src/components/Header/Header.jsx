@@ -1,105 +1,65 @@
-import React, { useState } from "react";
-import { HiMenu, HiX } from "react-icons/hi";
-import BoxIcon from "./BoxIcon/BoxIcon";
-import Menu from "./Menu/Menu";
+// Header.jsx
+import { useState, useEffect } from "react";
 import Logo from "./Logo/Logo";
-import { socialIcons, menuItems, actionItems, actionIcons } from "./contants";
+import Menu from "./Menu/Menu";
+import {
+  FiSearch,
+  FiUser,
+  FiHeart,
+  FiShoppingCart,
+  FiMenu,
+} from "react-icons/fi";
 
-function Header() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full px-4 py-4 bg-white border-b border-gray-200">
-      {/* Wrapper */}
-      <div className="grid items-center grid-cols-3 mx-auto max-w-7xl">
-        {/* LEFT */}
-        <div className="flex items-center gap-4">
-          {/* Hamburger mobile */}
-          <button
-            className="text-2xl text-gray-700 lg:hidden"
-            onClick={() => setSidebarOpen(true)}
-          >
-            <HiMenu />
-          </button>
-
-          {/* Social icons (hide on mobile) */}
-          <div className="hidden gap-2 sm:flex">
-            {socialIcons.map((icon, idx) => (
-              <BoxIcon key={idx} {...icon} />
-            ))}
-          </div>
-
-          {/* Menu items (desktop only) */}
-          <div className="hidden lg:block">
-            <Menu items={menuItems} />
-          </div>
-        </div>
-
-        {/* CENTER */}
-        <div className="flex justify-center">
-          <Logo />
-        </div>
-
-        {/* RIGHT */}
-        <div className="flex items-center justify-end gap-4">
-          {/* Action menu (desktop only) */}
-          <div className="hidden lg:block">
-            <Menu items={actionItems} />
-          </div>
-
-          {/* Icons (always visible) */}
-          <div className="flex gap-2">
-            {actionIcons.map((icon, idx) => (
-              <BoxIcon key={idx} {...icon} />
-            ))}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 ${
+        isScrolled ? "bg-white/90 shadow" : "bg-transparent border-transparent"
+      }`}
+    >
+      <div className="flex flex-wrap items-center justify-between px-6 mx-auto max-w-7xl">
+        <Logo />
+        <button
+          className="text-2xl md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <FiMenu />
+        </button>
+        <div
+          className={`w-full md:flex md:items-center md:space-x-6 ${
+            isOpen ? "block" : "hidden"
+          } md:w-auto`}
+        >
+          <Menu />
+          <div className="flex flex-col mt-4 space-y-2 md:flex-row md:items-center md:space-y-0 md:space-x-4 md:mt-0">
+            <button className="flex items-center space-x-1 text-sm">
+              <FiSearch />
+              <span>Search</span>
+            </button>
+            <button className="flex items-center space-x-1 text-sm">
+              <FiUser />
+              <span>Sign In</span>
+            </button>
+            <button className="flex items-center text-sm">
+              <FiHeart />
+            </button>
+            <button className="flex items-center text-sm">
+              <FiShoppingCart />
+            </button>
           </div>
         </div>
       </div>
-
-      {/* SIDEBAR */}
-      {sidebarOpen && (
-        <>
-          {/* Overlay */}
-          <div
-            className="fixed inset-0 z-40 bg-black bg-opacity-40"
-            onClick={() => setSidebarOpen(false)}
-          ></div>
-
-          {/* Sidebar Panel */}
-          <div className="fixed top-0 left-0 z-50 flex flex-col w-64 h-full gap-6 p-6 bg-white shadow-lg animate-slide-in">
-            {/* Close */}
-            <button
-              className="self-end text-2xl text-gray-600"
-              onClick={() => setSidebarOpen(false)}
-            >
-              <HiX />
-            </button>
-
-            {/* Logo */}
-            <div className="mb-2">
-              <Logo />
-            </div>
-
-            {/* Menu */}
-            <div className="flex flex-col gap-4">
-              <Menu items={menuItems} />
-              <Menu items={actionItems} />
-            </div>
-
-            {/* Icons */}
-            <div className="flex gap-3 pt-2 mt-auto border-t">
-              {socialIcons.map((icon, idx) => (
-                <BoxIcon key={idx} {...icon} />
-              ))}
-              {actionIcons.map((icon, idx) => (
-                <BoxIcon key={idx + 99} {...icon} />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
     </header>
   );
 }
-
-export default Header;
