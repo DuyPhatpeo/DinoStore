@@ -1,9 +1,12 @@
-import Logo from "@images/Logo-retina.webp";
+import React from "react";
+import logo from "@images/Logo-retina.webp"; // hoặc đường dẫn phù hợp
 
-export default function Logo() {
+function Logo() {
   return (
-    <div className="text-xl font-bold">
-      <img src={Logo} alt="Logo" />
+    <div className="flex justify-center">
+      <img src={logo} alt="Logo" className="object-contain h-12" />
     </div>
   );
 }
+
+export default Logo;

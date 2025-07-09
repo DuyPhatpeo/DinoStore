@@ -1,10 +1,32 @@
-export const NAV_LINKS = [
-  { label: "Elements", href: "#" },
-  { label: "Our Shop", href: "#" },
-  { label: "About us", href: "#" },
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaHeart,
+  FaCartShopping,
+} from "react-icons/fa6";
+import { MdSync } from "react-icons/md";
+
+export const socialIcons = [
+  { icon: FaFacebookF, url: "#" },
+  { icon: FaInstagram, url: "#" },
+  { icon: FaYoutube, url: "#" },
 ];
 
-export const ACTION_LINKS = [
-  { label: "Contact", href: "#" },
-  { label: "Sign In", href: "#" },
+export const menuItems = [
+  { label: "Elements", url: "#" },
+  { label: "Our Shop", url: "#" },
+  { label: "About Us", url: "#" },
+];
+
+export const actionItems = [
+  { label: "Contacts", url: "#" },
+  { label: "Search", url: "#" },
+  { label: "Sign In", url: "#" },
+];
+
+export const actionIcons = [
+  { icon: MdSync, url: "#" },
+  { icon: FaHeart, url: "#" },
+  { icon: FaCartShopping, url: "#" },
 ];

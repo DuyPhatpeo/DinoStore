@@ -1,30 +1,12 @@
-import { ACTION_LINKS } from "../contants";
-import { FiHeart, FiShoppingCart, FiSearch } from "react-icons/fi";
+/* eslint-disable no-unused-vars */
+import React from "react";
 
-export default function BoxIcon() {
+function BoxIcon({ icon: Icon, url }) {
   return (
-    <div className="flex items-center space-x-4">
-      {ACTION_LINKS.map((link, idx) => (
-        <a
-          key={idx}
-          href={link.href}
-          className="text-gray-700 hover:text-black"
-        >
-          {link.label}
-        </a>
-      ))}
-      <FiSearch
-        className="text-gray-700 cursor-pointer hover:text-black"
-        size={20}
-      />
-      <FiHeart
-        className="text-gray-700 cursor-pointer hover:text-black"
-        size={20}
-      />
-      <FiShoppingCart
-        className="text-gray-700 cursor-pointer hover:text-black"
-        size={20}
-      />
-    </div>
+    <a href={url} className="px-2 text-lg text-gray-600 hover:text-black">
+      <Icon />
+    </a>
   );
 }
+
+export default BoxIcon;

@@ -1,17 +1,17 @@
-import { NAV_LINKS } from "../contants";
+import React from "react";
 
-export default function Menu() {
+function Menu({ items }) {
   return (
-    <nav className="hidden space-x-6 md:flex">
-      {NAV_LINKS.map((link, idx) => (
-        <a
-          key={idx}
-          href={link.href}
-          className="text-gray-700 hover:text-black"
-        >
-          {link.label}
-        </a>
+    <ul className="flex gap-4 text-sm font-medium text-gray-700">
+      {items.map((item, idx) => (
+        <li key={idx}>
+          <a href={item.url} className="hover:text-black">
+            {item.label}
+          </a>
+        </li>
       ))}
-    </nav>
+    </ul>
   );
 }
+
+export default Menu;
