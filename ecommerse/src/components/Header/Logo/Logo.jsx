@@ -1,4 +1,4 @@
-import logo from "@images/Logo.png";
+import logo from "@images/logo-dino-store.png";
 
 export default function Logo() {
   return (
