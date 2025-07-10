@@ -43,18 +43,18 @@ export default function Header() {
         >
           <Menu />
           <div className="flex flex-col mt-4 space-y-2 md:flex-row md:items-center md:space-y-0 md:space-x-4 md:mt-0">
-            <button className="flex items-center space-x-1 text-sm">
+            <button className="flex items-center space-x-1 font-sans text-sm">
               <FiSearch />
               <span>Search</span>
             </button>
-            <button className="flex items-center space-x-1 text-sm">
+            <button className="flex items-center space-x-1 font-sans text-sm">
               <FiUser />
               <span>Sign In</span>
             </button>
-            <button className="flex items-center text-sm">
+            <button className="flex items-center font-sans text-sm">
               <FiHeart />
             </button>
-            <button className="flex items-center text-sm">
+            <button className="flex items-center font-sans text-sm">
               <FiShoppingCart />
             </button>
           </div>
