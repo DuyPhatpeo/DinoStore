@@ -1,4 +1,3 @@
-// Logo.jsx
 export default function Logo() {
-  return <h1 className="text-xl font-bold tracking-wide">Dino Store</h1>;
+  return <h1 className="text-2xl font-bold sm:text-3xl">Dino Store</h1>;
 }
