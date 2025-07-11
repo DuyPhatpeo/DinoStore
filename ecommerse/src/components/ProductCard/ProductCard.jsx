@@ -7,27 +7,27 @@ import {
 
 export default function ProductCard({ src, preSrc, name, price }) {
   return (
-    <div className="group bg-white rounded overflow-hidden">
+    <div className="overflow-hidden bg-white rounded group">
       {/* Hình ảnh sản phẩm */}
-      <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden">
+      <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden cursor-pointer">
         <img
           src={src}
           alt={name || "Product Image"}
-          className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+          className="object-cover w-full h-full transition-opacity duration-300 group-hover:opacity-0"
         />
         <img
           src={preSrc}
           alt={name || "Product Hover Image"}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          className="absolute inset-0 object-cover w-full h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
         />
 
         {/* Icon hover bên phải */}
-        <div className="absolute top-2 right-2 flex flex-col bg-white rounded-md shadow p-1 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-10">
+        <div className="absolute z-10 flex flex-col p-1 transition-all duration-300 translate-x-4 bg-white rounded-md shadow opacity-0 cursor-pointer top-2 right-2 group-hover:opacity-100 group-hover:translate-x-0">
           {[MdShoppingBag, MdFavoriteBorder, MdAutorenew, MdVisibility].map(
             (Icon, index) => (
               <button
                 key={index}
-                className="p-2 hover:bg-gray-100 rounded transition"
+                className="p-2 transition rounded hover:bg-gray-100"
               >
                 <Icon className="w-4 h-4 text-gray-700" />
               </button>
