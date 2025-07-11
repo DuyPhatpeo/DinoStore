@@ -7,6 +7,7 @@ import MainLayout from "@components/Layout/Layout";
 import ListProduct from "@components/ListProduct/ListProduct";
 
 import { getProducts } from "@/apis/productService";
+import HeroBanner from "@components/HeroBanner/HeroBanner";
 
 function HomePage() {
   const [listProducts, setListProducts] = useState([]);
@@ -26,6 +27,7 @@ function HomePage() {
         <CountdownBanner />
         <ListProduct data={listProducts} />
       </MainLayout>
+      <HeroBanner />
     </>
   );
 }
