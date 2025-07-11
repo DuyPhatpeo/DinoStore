@@ -1,17 +1,22 @@
-import Banner from "@components/Banner/Banner";
-import CountdownBanner from "@components/CountdownBanner/CountdownBanner";
+import { useEffect, useState } from "react";
 import Header from "@components/Header/Header";
-import MainLayout from "@components/Layout/Layout";
+import Banner from "@components/Banner/Banner";
 import SectionHeading from "@components/SectionHeading/SectionHeading";
-import { useEffect } from "react";
-import { getProducts } from "@/apis/productService";
-import ProductCard from "@components/ProductCard/ProductCard";
+import CountdownBanner from "@components/CountdownBanner/CountdownBanner";
+import MainLayout from "@components/Layout/Layout";
 import ListProduct from "@components/ListProduct/ListProduct";
 
+import { getProducts } from "@/apis/productService";
+
 function HomePage() {
+  const [listProducts, setListProducts] = useState([]);
+
   useEffect(() => {
-    getProducts();
+    getProducts().then((res) => {
+      setListProducts(res.contents);
+    });
   }, []);
+  // console.log(listProducts, "listProducts");
   return (
     <>
       <Header />
@@ -19,7 +24,7 @@ function HomePage() {
       <SectionHeading />
       <MainLayout>
         <CountdownBanner />
-        <ListProduct />
+        <ListProduct data={listProducts} />
       </MainLayout>
     </>
   );

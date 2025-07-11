@@ -1,4 +1,5 @@
 import CountdownTimer from "@components/CountdownTimer/CountdownTimer";
+import MainLayout from "@components/Layout/Layout";
 import Banner from "@images/banner-countdown.webp";
 
 export default function CountdownBanner() {
@@ -8,7 +9,7 @@ export default function CountdownBanner() {
   targetDate.setSeconds(targetDate.getSeconds() + 1);
 
   return (
-    <div className="relative h-[400px] w-full rounded overflow-hidden">
+    <div className="relative h-100 w-full rounded overflow-hidden">
       {/* Image Background */}
       <img
         src={Banner}
