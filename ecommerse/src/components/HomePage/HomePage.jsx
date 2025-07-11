@@ -22,8 +22,8 @@ function HomePage() {
     <>
       <Header />
       <Banner />
-      <SectionHeading />
       <MainLayout>
+        <SectionHeading />
         <CountdownBanner />
         <ListProduct data={listProducts} />
       </MainLayout>

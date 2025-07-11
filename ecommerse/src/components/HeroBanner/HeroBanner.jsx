@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import Left from "@images/Image_1.webp";
 import Right from "@images/Image_2.webp";

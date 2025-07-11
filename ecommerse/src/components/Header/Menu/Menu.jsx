@@ -2,12 +2,12 @@ import { navLinks } from "../contants";
 
 export default function Menu() {
   return (
-    <nav className="flex flex-col space-y-2 md:flex-row md:space-x-6 md:space-y-0">
+    <nav className="flex flex-col space-y-3 md:flex-row md:items-center md:space-y-0 md:space-x-6">
       {navLinks.map((link, index) => (
         <a
           key={index}
           href={link.href}
-          className="relative text-sm transition-colors duration-200 group hover:text-black"
+          className="relative text-sm font-medium text-gray-700 transition-colors duration-200 group hover:text-black"
         >
           {link.name}
           {/* Gạch dưới hiệu ứng chạy từ phải sang trái */}

@@ -9,24 +9,24 @@ export default function CountdownBanner() {
   targetDate.setSeconds(targetDate.getSeconds() + 1);
 
   return (
-    <div className="relative h-100 w-full rounded overflow-hidden">
+    <div className="relative w-full overflow-hidden rounded h-100">
       {/* Image Background */}
       <img
         src={Banner}
         alt="Countdown Banner"
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 z-0 object-cover w-full h-full"
       />
 
       {/* Optional Overlay (semi-transparent dark) */}
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
+      <div className="absolute inset-0 z-10 bg-black/40"></div>
 
       {/* Content */}
-      <div className="relative z-20 h-full flex flex-col justify-center items-center text-white px-4 text-center">
+      <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center text-white">
         <CountdownTimer targetDate={targetDate} />
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-mono my-4">
+        <h3 className="my-4 font-mono text-xl sm:text-2xl md:text-3xl">
           The Classics Make A Comeback
         </h3>
-        <button className="bg-white text-black px-5 py-2 text-sm font-semibold rounded hover:bg-gray-100 transition">
+        <button className="px-5 py-2 text-sm font-semibold text-black transition bg-white rounded hover:bg-gray-100">
           Buy now
         </button>
       </div>

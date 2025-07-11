@@ -2,8 +2,8 @@ import ProductCard from "@components/ProductCard/ProductCard";
 
 export default function ListProduct({ data = [] }) {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    <div className="container px-4 py-8 mx-auto">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
         {data.map((product) => (
           <ProductCard
             key={product._id}

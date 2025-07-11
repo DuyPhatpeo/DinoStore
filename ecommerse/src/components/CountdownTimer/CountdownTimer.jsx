@@ -15,7 +15,7 @@ export default function CountdownTimer({ targetDate }) {
   }
 
   return (
-    <div className="flex space-x-2">
+    <div className="flex flex-wrap justify-center gap-2 mb-2 sm:gap-3 sm:mb-4">
       {[
         { label: "Days", value: timeLeft.days },
         { label: "Hours", value: timeLeft.hours },
@@ -24,12 +24,14 @@ export default function CountdownTimer({ targetDate }) {
       ].map((item, i) => (
         <div
           key={i}
-          className="bg-white text-black px-3 py-1 text-sm font-mono rounded shadow"
+          className="bg-white text-black px-3 py-2 text-xs sm:text-sm md:text-base font-mono rounded shadow-md min-w-[60px] text-center"
         >
-          <span className="font-bold">
+          <div className="text-lg font-bold sm:text-xl md:text-2xl">
             {String(item.value).padStart(2, "0")}
-          </span>{" "}
-          {item.label}
+          </div>
+          <div className="uppercase text-[10px] sm:text-xs text-gray-600">
+            {item.label}
+          </div>
         </div>
       ))}
     </div>

@@ -6,9 +6,9 @@ export default function Logo() {
       <img
         src={logo}
         alt="Dino Store Logo"
-        className="h-10 w-10 sm:h-10 sm:w-10 object-contain"
+        className="object-contain w-10 h-10"
       />
-      <span className="text-xl font-semibold text-gray-800 sm:text-2xl">
+      <span className="hidden text-2xl font-semibold text-gray-800 sm:inline">
         Dino Store
       </span>
     </div>
