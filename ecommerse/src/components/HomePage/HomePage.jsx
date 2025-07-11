@@ -26,8 +26,8 @@ function HomePage() {
         <SectionHeading />
         <CountdownBanner />
         <ListProduct data={listProducts} />
+        <HeroBanner />
       </MainLayout>
-      <HeroBanner />
     </>
   );
 }
