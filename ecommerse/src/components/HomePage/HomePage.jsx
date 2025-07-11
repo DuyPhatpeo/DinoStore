@@ -8,6 +8,7 @@ import ListProduct from "@components/ListProduct/ListProduct";
 
 import { getProducts } from "@/apis/productService";
 import HeroBanner from "@components/HeroBanner/HeroBanner";
+import Footer from "@components/Footer/Footer";
 
 function HomePage() {
   const [listProducts, setListProducts] = useState([]);
@@ -28,6 +29,7 @@ function HomePage() {
         <ListProduct data={listProducts} />
         <HeroBanner />
       </MainLayout>
+      <Footer />
     </>
   );
 }
