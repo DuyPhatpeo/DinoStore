@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
+import useHeaderBehavior from "@hooks/useHeaderBehavior";
+
 import {
   FiSearch,
   FiUser,
@@ -12,24 +13,7 @@ import {
 import { MdAutorenew } from "react-icons/md";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const searchInputRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Focus input khi mở menu mobile
-  useEffect(() => {
-    if (isOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isOpen]);
+  const { isOpen, setIsOpen, isScrolled, searchInputRef } = useHeaderBehavior();
 
   return (
     <header
@@ -38,7 +22,7 @@ export default function Header() {
       }`}
     >
       <div className="flex items-center justify-between w-full px-4 mx-auto max-w-7xl md:justify-start md:space-x-6">
-        {/* Nút menu (mobile) */}
+        {/* Nút menu mobile */}
         <button
           className="z-10 text-2xl md:hidden"
           onClick={() => setIsOpen(true)}
@@ -46,19 +30,19 @@ export default function Header() {
           <FiMenu />
         </button>
 
-        {/* Logo chính giữa mobile */}
+        {/* Logo */}
         <div className="flex justify-center flex-1 md:justify-start">
           <Logo />
         </div>
 
-        {/* Giỏ hàng bên phải (mobile) */}
+        {/* Giỏ hàng bên phải mobile */}
         <div className="z-10 text-xl md:hidden">
           <button title="Cart">
             <FiShoppingCart />
           </button>
         </div>
 
-        {/* Menu + Icons (desktop) */}
+        {/* Menu desktop */}
         <div className="hidden md:flex md:items-center md:ml-auto md:space-x-6">
           <Menu />
           <div className="flex items-center space-x-4">
@@ -83,12 +67,20 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Sidebar Menu (Mobile) */}
+      {/* Sidebar Menu mobile */}
       {isOpen && (
         <div className="fixed inset-0 z-[60] bg-black bg-opacity-40 md:hidden">
           <div className="absolute top-0 left-0 w-[80vw] h-full p-6 bg-white shadow-lg flex flex-col">
-            {/* Input Search */}
-            <div className="mb-4">
+            {/* Header của menu */}
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold">Menu</h3>
+              <button onClick={() => setIsOpen(false)}>
+                <FiX className="text-xl" />
+              </button>
+            </div>
+
+            {/* Tìm kiếm */}
+            <div className="mb-6">
               <input
                 ref={searchInputRef}
                 type="text"
@@ -97,15 +89,7 @@ export default function Header() {
               />
             </div>
 
-            {/* Đóng menu */}
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-semibold">Menu</h3>
-              <button onClick={() => setIsOpen(false)}>
-                <FiX className="text-xl" />
-              </button>
-            </div>
-
-            {/* Các mục menu */}
+            {/* Danh sách menu */}
             <div className="flex flex-col space-y-4">
               <Menu />
               <button className="flex items-center space-x-2" title="Sign In">

@@ -1,21 +1,29 @@
-import { useEffect, useState } from "react";
-import Home from "@components/Home/Home";
-import Loading from "@components/Loading/Loading"; // đường dẫn tuỳ bạn
+import { useEffect, useState, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Loading from "@components/Loading/Loading";
+import routers from "@routers/routers";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Mô phỏng quá trình tải dữ liệu hoặc khởi động trang
+    // Mô phỏng loading khi khởi động
     const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
+  if (loading) return <Loading />;
+
   return (
-    <>
-      {loading && <Loading />}
-      {!loading && <Home />}
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          {routers.map((item, index) => (
+            <Route path={item.path} element={<item.component />} key={index} />
+          ))}
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
