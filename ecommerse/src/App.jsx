@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HomePage from "@components/HomePage/HomePage";
+import Home from "@components/Home/Home";
 import Loading from "@components/Loading/Loading"; // đường dẫn tuỳ bạn
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       {loading && <Loading />}
-      {!loading && <HomePage />}
+      {!loading && <Home />}
     </>
   );
 }
