@@ -1,6 +1,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loading from "@components/Loading/Loading";
+import ScrollToTopButton from "@components/ScrollToTopButton/ScrollToTopButton"; // 👈 import ở đây
 import routers from "@routers/routers";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             <Route path={item.path} element={<item.component />} key={index} />
           ))}
         </Routes>
+
+        {/* 👉 Nút quay lại đầu trang (hiện ở mọi page) */}
+        <ScrollToTopButton />
       </Suspense>
     </BrowserRouter>
   );
