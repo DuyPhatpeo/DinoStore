@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import { MdAutorenew } from "react-icons/md";
 import CompareForm from "@components/ContentSidebar/Compare/Compare";
+import WishlistForm from "@components/ContentSidebar/Wishlist/Wishlist";
 
 export default function Header() {
   const {
@@ -85,9 +86,7 @@ export default function Header() {
 
             <button
               title="Wishlist"
-              onClick={() =>
-                openSidebar(<div className="p-4">Your wishlist is empty.</div>)
-              }
+              onClick={() => openSidebar(<WishlistForm />)}
             >
               <FiHeart />
             </button>
@@ -148,11 +147,7 @@ export default function Header() {
               <button
                 className="flex items-center space-x-2"
                 title="Wishlist"
-                onClick={() =>
-                  openSidebar(
-                    <div className="p-4">Your wishlist is empty.</div>
-                  )
-                }
+                onClick={() => openSidebar(<WishlistForm />)}
               >
                 <FiHeart />
                 <span>Wishlist</span>
