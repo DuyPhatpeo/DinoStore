@@ -14,6 +14,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { MdAutorenew } from "react-icons/md";
+import CompareForm from "@components/ContentSidebar/Compare/Compare";
 
 export default function Header() {
   const {
@@ -77,9 +78,7 @@ export default function Header() {
 
             <button
               title="Compare"
-              onClick={() =>
-                openSidebar(<div className="p-4">No products to compare.</div>)
-              }
+              onClick={() => openSidebar(<CompareForm />)}
             >
               <MdAutorenew className="text-lg" />
             </button>
@@ -141,11 +140,7 @@ export default function Header() {
               <button
                 className="flex items-center space-x-2"
                 title="Compare"
-                onClick={() =>
-                  openSidebar(
-                    <div className="p-4">No products to compare.</div>
-                  )
-                }
+                onClick={() => openSidebar(<CompareForm />)}
               >
                 <MdAutorenew />
                 <span>Compare</span>
