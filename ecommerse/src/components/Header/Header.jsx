@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import { SideBarContext } from "@contexts/SideBarProvider";
+import useHeaderBehavior from "@hooks/useHeaderBehavior";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
-import useHeaderBehavior from "@hooks/useHeaderBehavior";
-import { useContext } from "react";
+import LoginForm from "@components/ContentSidebar/Login/Login";
 
 import {
   FiSearch,
@@ -22,8 +23,7 @@ export default function Header() {
     searchInputRef,
   } = useHeaderBehavior();
 
-  const { isOpen: isSidebarOpen, setIsOpen: setSidebarIsOpen } =
-    useContext(SideBarContext);
+  const { openSidebar } = useContext(SideBarContext);
 
   return (
     <header
@@ -47,7 +47,12 @@ export default function Header() {
 
         {/* Giỏ hàng bên phải mobile */}
         <div className="z-10 text-xl md:hidden">
-          <button title="Cart">
+          <button
+            title="Cart"
+            onClick={() =>
+              openSidebar(<div className="p-4">Your cart is empty.</div>)
+            }
+          >
             <FiShoppingCart />
           </button>
         </div>
@@ -60,26 +65,11 @@ export default function Header() {
               <FiSearch />
               <span>Search</span>
             </button>
+
             <button
               className="flex items-center space-x-1"
               title="Sign In"
-              onClick={() => {
-                setSidebarIsOpen(true);
-                setContent(
-                  <div>
-                    <label className="block mb-2">Username or Email *</label>
-                    <input className="w-full border px-3 py-2 mb-4" />
-                    <label className="block mb-2">Password *</label>
-                    <input
-                      className="w-full border px-3 py-2 mb-4"
-                      type="password"
-                    />
-                    <button className="w-full bg-black text-white py-2">
-                      LOGIN
-                    </button>
-                  </div>
-                );
-              }}
+              onClick={() => openSidebar(<LoginForm />)}
             >
               <FiUser />
               <span>Sign In</span>
@@ -87,30 +77,27 @@ export default function Header() {
 
             <button
               title="Compare"
-              onClick={() => {
-                setSidebarIsOpen(true);
-                setContent(<div>Compare Feature Coming Soon!</div>);
-              }}
+              onClick={() =>
+                openSidebar(<div className="p-4">No products to compare.</div>)
+              }
             >
               <MdAutorenew className="text-lg" />
             </button>
 
             <button
               title="Wishlist"
-              onClick={() => {
-                setSidebarIsOpen(true);
-                setContent(<div>Your Wishlist is empty.</div>);
-              }}
+              onClick={() =>
+                openSidebar(<div className="p-4">Your wishlist is empty.</div>)
+              }
             >
               <FiHeart />
             </button>
 
             <button
               title="Cart"
-              onClick={() => {
-                setSidebarIsOpen(true);
-                setContent(<div>Your Cart is empty.</div>);
-              }}
+              onClick={() =>
+                openSidebar(<div className="p-4">Your cart is empty.</div>)
+              }
             >
               <FiShoppingCart />
             </button>
@@ -122,7 +109,7 @@ export default function Header() {
       {isHeaderOpen && (
         <div className="fixed inset-0 z-[60] bg-black bg-opacity-40 md:hidden">
           <div className="absolute top-0 left-0 w-[80vw] h-full p-6 bg-white shadow-lg flex flex-col">
-            {/* Header của menu */}
+            {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-semibold">Menu</h3>
               <button onClick={() => setHeaderIsOpen(false)}>
@@ -140,18 +127,38 @@ export default function Header() {
               />
             </div>
 
-            {/* Danh sách menu */}
+            {/* Danh sách menu mobile */}
             <div className="flex flex-col space-y-4">
               <Menu />
-              <button className="flex items-center space-x-2" title="Sign In">
+              <button
+                className="flex items-center space-x-2"
+                title="Sign In"
+                onClick={() => openSidebar(<LoginForm />)}
+              >
                 <FiUser />
                 <span>Sign In</span>
               </button>
-              <button className="flex items-center space-x-2" title="Compare">
+              <button
+                className="flex items-center space-x-2"
+                title="Compare"
+                onClick={() =>
+                  openSidebar(
+                    <div className="p-4">No products to compare.</div>
+                  )
+                }
+              >
                 <MdAutorenew />
                 <span>Compare</span>
               </button>
-              <button className="flex items-center space-x-2" title="Wishlist">
+              <button
+                className="flex items-center space-x-2"
+                title="Wishlist"
+                onClick={() =>
+                  openSidebar(
+                    <div className="p-4">Your wishlist is empty.</div>
+                  )
+                }
+              >
                 <FiHeart />
                 <span>Wishlist</span>
               </button>
