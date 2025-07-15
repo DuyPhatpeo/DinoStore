@@ -7,7 +7,8 @@
       "@styles/*": ["src/styles/styles/*"],
       "@images/*": ["src/assets/images/*"],
       "@routers/*": ["src/routers/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@contexts/*": ["src/contexts/*"]
     }
   },
   "include": ["src/**/*"]

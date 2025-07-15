@@ -1,6 +1,8 @@
+import { SideBarContext } from "@contexts/SideBarProvider";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
 import useHeaderBehavior from "@hooks/useHeaderBehavior";
+import { useContext } from "react";
 
 import {
   FiSearch,
@@ -13,7 +15,15 @@ import {
 import { MdAutorenew } from "react-icons/md";
 
 export default function Header() {
-  const { isOpen, setIsOpen, isScrolled, searchInputRef } = useHeaderBehavior();
+  const {
+    isOpen: isHeaderOpen,
+    setIsOpen: setHeaderIsOpen,
+    isScrolled,
+    searchInputRef,
+  } = useHeaderBehavior();
+
+  const { isOpen: isSidebarOpen, setIsOpen: setSidebarIsOpen } =
+    useContext(SideBarContext);
 
   return (
     <header
@@ -25,7 +35,7 @@ export default function Header() {
         {/* Nút menu mobile */}
         <button
           className="z-10 text-2xl md:hidden"
-          onClick={() => setIsOpen(true)}
+          onClick={() => setHeaderIsOpen(true)}
         >
           <FiMenu />
         </button>
@@ -50,17 +60,58 @@ export default function Header() {
               <FiSearch />
               <span>Search</span>
             </button>
-            <button className="flex items-center space-x-1" title="Sign In">
+            <button
+              className="flex items-center space-x-1"
+              title="Sign In"
+              onClick={() => {
+                setSidebarIsOpen(true);
+                setContent(
+                  <div>
+                    <label className="block mb-2">Username or Email *</label>
+                    <input className="w-full border px-3 py-2 mb-4" />
+                    <label className="block mb-2">Password *</label>
+                    <input
+                      className="w-full border px-3 py-2 mb-4"
+                      type="password"
+                    />
+                    <button className="w-full bg-black text-white py-2">
+                      LOGIN
+                    </button>
+                  </div>
+                );
+              }}
+            >
               <FiUser />
               <span>Sign In</span>
             </button>
-            <button title="Compare">
+
+            <button
+              title="Compare"
+              onClick={() => {
+                setSidebarIsOpen(true);
+                setContent(<div>Compare Feature Coming Soon!</div>);
+              }}
+            >
               <MdAutorenew className="text-lg" />
             </button>
-            <button title="Wishlist">
+
+            <button
+              title="Wishlist"
+              onClick={() => {
+                setSidebarIsOpen(true);
+                setContent(<div>Your Wishlist is empty.</div>);
+              }}
+            >
               <FiHeart />
             </button>
-            <button title="Cart">
+
+            <button
+              title="Cart"
+              onClick={() => {
+                setSidebarIsOpen(true);
+                setContent(<div>Your Cart is empty.</div>);
+              }}
+            >
               <FiShoppingCart />
             </button>
           </div>
@@ -68,13 +119,13 @@ export default function Header() {
       </div>
 
       {/* Sidebar Menu mobile */}
-      {isOpen && (
+      {isHeaderOpen && (
         <div className="fixed inset-0 z-[60] bg-black bg-opacity-40 md:hidden">
           <div className="absolute top-0 left-0 w-[80vw] h-full p-6 bg-white shadow-lg flex flex-col">
             {/* Header của menu */}
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-semibold">Menu</h3>
-              <button onClick={() => setIsOpen(false)}>
+              <button onClick={() => setHeaderIsOpen(false)}>
                 <FiX className="text-xl" />
               </button>
             </div>
