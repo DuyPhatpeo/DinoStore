@@ -4,8 +4,7 @@ import AnhDau from "@images/pro-1.jpg"; // Ảnh mock
 const cartItems = [
   {
     id: 1,
-    name: "10K Yellow Gold",
-    size: "M",
+    name: "10K Yellow Gold - M",
     price: 99.99,
     quantity: 1,
     sku: "12345",
@@ -13,7 +12,7 @@ const cartItems = [
   },
 ];
 
-export default function CartSidebar() {
+export default function Cart() {
   const handleRemove = (id) => {
     console.log("Remove item with id:", id);
     // TODO: implement remove logic
@@ -58,7 +57,6 @@ export default function CartSidebar() {
               />
               <div className="w-[180px]">
                 <p className="font-semibold truncate">{item.name}</p>
-                <p className="text-gray-600 text-xs mb-1">Size: {item.size}</p>
                 <p className="text-gray-700 text-sm">
                   {item.quantity} × ${item.price.toFixed(2)}
                 </p>
