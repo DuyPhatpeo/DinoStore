@@ -3,7 +3,7 @@ import { SideBarContext } from "@contexts/SideBarProvider";
 import useHeaderBehavior from "@hooks/useHeaderBehavior";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
-import LoginForm from "@components/ContentSidebar/Login/Login";
+import LoginForm from "@components/ContentSidebar/Auth/AuthPanel";
 import CompareForm from "@components/ContentSidebar/Compare/Compare";
 import WishlistForm from "@components/ContentSidebar/Wishlist/Wishlist";
 
@@ -115,7 +115,7 @@ export default function Header() {
               <button
                 className="flex items-center space-x-2"
                 title="Sign In"
-                onClick={() => openSidebar(<LoginForm />)}
+                onClick={() => openSidebar(<AuthPanel />)}
               >
                 <FiUser />
                 <span>Sign In</span>

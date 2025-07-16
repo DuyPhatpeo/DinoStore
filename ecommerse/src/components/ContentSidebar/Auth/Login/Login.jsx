@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { useToast } from "@hooks/useToast"; // ✅ Hook toast
+import { useToast } from "@hooks/useToast";
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string()
@@ -13,14 +13,10 @@ const LoginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-export default function LoginForm() {
+export default function Login({ onSwitch }) {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev);
-  const { showToast } = useToast(); // ✅
-
-  const handleSignUp = () => {
-    console.log("Redirecting to Sign Up...");
-  };
+  const { showToast } = useToast();
 
   return (
     <div className="w-full h-full px-6 pt-6 text-[13px] font-mono text-gray-800">
@@ -35,12 +31,12 @@ export default function LoginForm() {
         validationSchema={LoginSchema}
         onSubmit={(values, { resetForm }) => {
           showToast("success", `Welcome back, ${values.username}! 🎉`);
-          console.log("Logging in with:", values);
           resetForm();
         }}
       >
         {() => (
           <Form className="space-y-4">
+            {/* Username */}
             <div>
               <label className="block mb-1">
                 Username or Email <span className="text-red-500">*</span>
@@ -58,6 +54,7 @@ export default function LoginForm() {
               />
             </div>
 
+            {/* Password */}
             <div>
               <label className="block mb-1">
                 Password <span className="text-red-500">*</span>
@@ -85,6 +82,7 @@ export default function LoginForm() {
               />
             </div>
 
+            {/* Remember me */}
             <div className="flex items-center space-x-2">
               <Field
                 type="checkbox"
@@ -95,6 +93,7 @@ export default function LoginForm() {
               <label htmlFor="remember">Remember me</label>
             </div>
 
+            {/* Submit */}
             <button
               type="submit"
               className="w-full bg-neutral-800 hover:bg-black text-white text-[12px] tracking-wider uppercase py-2 rounded-sm transition"
@@ -102,6 +101,7 @@ export default function LoginForm() {
               Login
             </button>
 
+            {/* Switch to SignUp */}
             <div className="text-center mt-4 space-y-2">
               <a
                 href="#"
@@ -111,7 +111,7 @@ export default function LoginForm() {
               </a>
               <button
                 type="button"
-                onClick={handleSignUp}
+                onClick={onSwitch}
                 className="text-gray-600 hover:text-black hover:underline text-sm"
               >
                 Don't have an account? Sign up
