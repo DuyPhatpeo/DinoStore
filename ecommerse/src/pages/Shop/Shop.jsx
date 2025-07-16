@@ -6,7 +6,11 @@ function Shop() {
   return (
     <>
       <Header />
-      <MainLayout></MainLayout>
+      <MainLayout>
+        <div>
+          <h1 className="text-2xl font-bold mb-4">Shop</h1>
+        </div>
+      </MainLayout>
       <Footer />
     </>
   );

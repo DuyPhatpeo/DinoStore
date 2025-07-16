@@ -7,16 +7,16 @@ export default function NotFound() {
         404
       </h1>
       <p className="text-xl font-semibold mb-4 text-gray-800">
-        Oops! Trang bạn tìm không tồn tại.
+        Oops! The page you’re looking for doesn’t exist.
       </p>
       <p className="text-gray-500 mb-6">
-        Có thể đường dẫn bị sai, hoặc trang đã bị xoá.
+        It might have been moved or deleted, or the link could be incorrect.
       </p>
       <Link
         to="/"
         className="inline-block bg-amber-500 text-white px-6 py-2 rounded-full hover:bg-amber-600 transition-all duration-200"
       >
-        Quay về trang chủ
+        Go back to homepage
       </Link>
     </div>
   );

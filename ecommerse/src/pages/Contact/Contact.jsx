@@ -1,8 +1,18 @@
+import Footer from "@components/Footer/Footer";
+import Header from "@components/Header/Header";
+import MainLayout from "@components/Layout/Layout";
+
 function Contact() {
   return (
-    <div>
-      <h1>Contact Page</h1>
-    </div>
+    <>
+      <Header />
+      <MainLayout>
+        <div>
+          <h1 className="text-2xl font-bold mb-4">Contact Us</h1>
+        </div>
+      </MainLayout>
+      <Footer />
+    </>
   );
 }
 
