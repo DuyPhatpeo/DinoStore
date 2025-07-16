@@ -6,7 +6,6 @@ import routers from "@routers/routers";
 import { SideBarProvider } from "@contexts/SideBarProvider";
 import { ToastProvider } from "@contexts/ToastProvider";
 import Sidebar from "@components/Sidebar/Sidebar";
-import ToastTester from "@components/ToastTester/ToastTester";
 
 function App() {
   const [loading, setLoading] = useState(true);
