@@ -8,7 +8,8 @@
       "@images/*": ["src/assets/images/*"],
       "@routers/*": ["src/routers/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@contexts/*": ["src/contexts/*"]
+      "@contexts/*": ["src/contexts/*"],
+      "@apis/*": ["src/apis/*"]
     }
   },
   "include": ["src/**/*"]

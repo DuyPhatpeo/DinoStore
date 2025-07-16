@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useToast } from "@hooks/useToast";
+import { register } from "@apis/authService";
 
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -16,8 +17,11 @@ const SignUpSchema = Yup.object().shape({
 
 export default function Register({ onSwitch }) {
   const [showPassword, setShowPassword] = useState(false);
-  const togglePassword = () => setShowPassword((prev) => !prev);
+  const [showConfirm, setShowConfirm] = useState(false);
   const { showToast } = useToast();
+
+  const togglePassword = () => setShowPassword((prev) => !prev);
+  const toggleConfirm = () => setShowConfirm((prev) => !prev);
 
   return (
     <div className="w-full h-full px-6 pt-6 text-[13px] font-mono text-gray-800">
@@ -30,9 +34,23 @@ export default function Register({ onSwitch }) {
       <Formik
         initialValues={{ email: "", password: "", confirmPassword: "" }}
         validationSchema={SignUpSchema}
-        onSubmit={(values, { resetForm }) => {
-          showToast("success", `Welcome aboard, ${values.email}! 🎉`);
-          resetForm();
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            const res = await register({
+              email: values.email,
+              password: values.password,
+            });
+
+            showToast(
+              "success",
+              `Account created for ${res.email || values.email} 🎉`
+            );
+            resetForm();
+            // 👉 Optional: Auto switch to login
+            onSwitch();
+          } catch (err) {
+            showToast("error", err.message);
+          }
         }}
       >
         {() => (
@@ -88,12 +106,22 @@ export default function Register({ onSwitch }) {
               <label className="block mb-1">
                 Confirm Password <span className="text-red-500">*</span>
               </label>
-              <Field
-                name="confirmPassword"
-                type="password"
-                className="w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-black"
-                placeholder="Re-enter password"
-              />
+              <div className="relative">
+                <Field
+                  name="confirmPassword"
+                  type={showConfirm ? "text" : "password"}
+                  className="w-full px-3 py-2 border rounded pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="Re-enter password"
+                />
+                <button
+                  type="button"
+                  onClick={toggleConfirm}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                  tabIndex={-1}
+                >
+                  {showConfirm ? <FiEyeOff /> : <FiEye />}
+                </button>
+              </div>
               <ErrorMessage
                 name="confirmPassword"
                 component="div"

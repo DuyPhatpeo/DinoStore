@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useToast } from "@hooks/useToast";
+import { login } from "@apis/authService";
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string()
@@ -29,14 +30,34 @@ export default function Login({ onSwitch }) {
       <Formik
         initialValues={{ username: "", password: "", remember: false }}
         validationSchema={LoginSchema}
-        onSubmit={(values, { resetForm }) => {
-          showToast("success", `Welcome back, ${values.username}! 🎉`);
-          resetForm();
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            const res = await login({
+              email: values.username,
+              password: values.password,
+            });
+
+            // Gợi ý: lưu token nếu login thành công
+            if (values.remember) {
+              localStorage.setItem("token", res.token);
+            } else {
+              sessionStorage.setItem("token", res.token);
+            }
+
+            showToast(
+              "success",
+              `Welcome back, ${res.user?.email || values.username}! 🎉`
+            );
+            resetForm();
+            // 👉 Có thể redirect user ở đây nếu muốn
+          } catch (err) {
+            showToast("error", err.message);
+          }
         }}
       >
         {() => (
           <Form className="space-y-4">
-            {/* Username */}
+            {/* Email */}
             <div>
               <label className="block mb-1">
                 Username or Email <span className="text-red-500">*</span>
@@ -101,7 +122,7 @@ export default function Login({ onSwitch }) {
               Login
             </button>
 
-            {/* Switch to SignUp */}
+            {/* Switch */}
             <div className="text-center mt-4 space-y-2">
               <a
                 href="#"
