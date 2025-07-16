@@ -34,7 +34,6 @@ function App() {
                 />
               ))}
             </Routes>
-            <ToastTester />
             <ScrollToTopButton />
           </Suspense>
         </BrowserRouter>
