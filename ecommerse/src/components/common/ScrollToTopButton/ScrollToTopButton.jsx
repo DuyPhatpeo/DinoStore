@@ -3,12 +3,8 @@ import { useEffect, useState } from "react";
 import useScrollVisibility from "@hooks/useScrollVisibility";
 
 export default function ScrollToTopButton() {
-  const visible = useScrollVisibility(300);
+  const visible = useScrollVisibility(100);
   const [scrollPercent, setScrollPercent] = useState(0);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,46 +15,50 @@ export default function ScrollToTopButton() {
       setScrollPercent(percent);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!visible) return null;
 
-  const radius = 22;
-  const stroke = 3;
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const radius = 18;
+  const stroke = 2.5;
   const normalizedRadius = radius - stroke;
-  const circumference = normalizedRadius * 2 * Math.PI;
+  const circumference = 2 * Math.PI * normalizedRadius;
   const strokeDashoffset =
     circumference - (scrollPercent / 100) * circumference;
 
   return (
     <button
       onClick={scrollToTop}
-      title="Back to top"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-black text-white flex items-center justify-center shadow-2xl hover:bg-amber-600 transition-all duration-300 group"
+      title="Lên đầu trang"
+      className="fixed bottom-5 right-5 z-50 w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:bg-yellow-500 transition-colors group"
     >
-      {/* SVG Progress Circle */}
       <svg
-        className="absolute w-full h-full rotate-[-90deg]"
-        viewBox="0 0 48 48"
+        className="absolute w-full h-full rotate-[-90deg] pointer-events-none"
+        viewBox="0 0 40 40"
       >
         <circle
-          stroke="#facc15"
+          stroke="#fde047" // yellow-400
           fill="transparent"
           strokeWidth={stroke}
           strokeLinecap="round"
           r={normalizedRadius}
-          cx="24"
-          cy="24"
+          cx="20"
+          cy="20"
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
-          className="transition-all duration-300 ease-out"
+          style={{
+            transition: "stroke-dashoffset 0.3s ease-out",
+          }}
         />
       </svg>
 
-      {/* Arrow Icon */}
-      <FiArrowUp className="text-2xl relative z-10 transition-transform duration-300 group-hover:-translate-y-1" />
+      <FiArrowUp className="text-base relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5" />
     </button>
   );
 }
