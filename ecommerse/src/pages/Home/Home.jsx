@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "@components/Header/Header";
-import Banner from "@components/Banner/Banner";
+import Banner from "@components/Home/Banner/Banner";
 import SectionHeading from "@components/Home/SectionHeading/SectionHeading";
 import CountdownBanner from "@components/Home/CountdownBanner/CountdownBanner";
 import MainLayout from "@components/Layout/Layout";
