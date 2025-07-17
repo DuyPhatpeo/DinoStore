@@ -1,5 +1,4 @@
 import CountdownTimer from "@components/CountdownTimer/CountdownTimer";
-import MainLayout from "@components/Layout/Layout";
 import Banner from "@images/banner-countdown.webp";
 
 export default function CountdownBanner() {
