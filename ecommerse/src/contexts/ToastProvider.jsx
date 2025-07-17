@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ToastContext = createContext();
 
 export const ToastProvider = ({ children }) => {

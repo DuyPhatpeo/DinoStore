@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Header from "@components/Header/Header";
 import Banner from "@components/Banner/Banner";
-import SectionHeading from "@components/SectionHeading/SectionHeading";
-import CountdownBanner from "@components/CountdownBanner/CountdownBanner";
+import SectionHeading from "@components/Home/SectionHeading/SectionHeading";
+import CountdownBanner from "@components/Home/CountdownBanner/CountdownBanner";
 import MainLayout from "@components/Layout/Layout";
-import ListProduct from "@components/ListProduct/ListProduct";
+import ListProduct from "@components/product/ListProduct/ListProduct";
 
 import { getProducts } from "@/apis/productService";
-import HeroBanner from "@components/HeroBanner/HeroBanner";
+import HeroBanner from "@components/Home/HeroBanner/HeroBanner";
 import Footer from "@components/Footer/Footer";
 
 function HomePage() {

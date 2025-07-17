@@ -1,4 +1,4 @@
-import CountdownTimer from "@components/CountdownTimer/CountdownTimer";
+import CountdownTimer from "@components/Home/CountdownTimer/CountdownTimer";
 import Banner from "@images/banner-countdown.webp";
 
 export default function CountdownBanner() {

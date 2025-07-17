@@ -1,7 +1,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Loading from "@components/Loading/Loading";
-import ScrollToTopButton from "@components/ScrollToTopButton/ScrollToTopButton";
+import Loading from "@components/common/Loading/Loading";
+import ScrollToTopButton from "@components/common/ScrollToTopButton/ScrollToTopButton";
 import routers from "@routers/routers";
 import { SideBarProvider } from "@contexts/SideBarProvider";
 import { ToastProvider } from "@contexts/ToastProvider";

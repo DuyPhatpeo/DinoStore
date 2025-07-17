@@ -1,4 +1,4 @@
-import ProductCard from "@components/ProductCard/ProductCard";
+import ProductCard from "@components/product/ProductCard/ProductCard";
 
 export default function ListProduct({ data = [] }) {
   return (
