@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // Mô phỏng loading khi khởi động app
-    const timer = setTimeout(() => setLoading(false), 1500);
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
