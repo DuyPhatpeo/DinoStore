@@ -1,9 +1,14 @@
-import ProductCard from "@components/product/ProductCard/ProductCard";
+import ProductCard from "@components/Shop/ProductCard/ProductCard";
 
-export default function ListProduct({ data = [] }) {
+export default function ListProduct({ data = [], layout = "grid" }) {
+  const gridClass =
+    layout === "grid"
+      ? "grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4"
+      : "flex flex-col gap-4";
+
   return (
     <div className="container px-4 py-8 mx-auto">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
+      <div className={gridClass}>
         {data.map((product) => (
           <ProductCard
             key={product._id}
@@ -11,6 +16,7 @@ export default function ListProduct({ data = [] }) {
             preSrc={product.images?.[1] || product.images?.[0]}
             name={product.name}
             price={formatPrice(product.price)}
+            layout={layout}
           />
         ))}
       </div>
@@ -18,7 +24,6 @@ export default function ListProduct({ data = [] }) {
   );
 }
 
-// Hàm format giá theo định dạng VNĐ
 function formatPrice(price) {
   if (!price) return "0₫";
   return `${price.toLocaleString("vi-VN")}₫`;

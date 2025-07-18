@@ -4,7 +4,7 @@ import Banner from "@components/Home/Banner/Banner";
 import SectionHeading from "@components/Home/SectionHeading/SectionHeading";
 import CountdownBanner from "@components/Home/CountdownBanner/CountdownBanner";
 import MainLayout from "@components/Layout/Layout";
-import ListProduct from "@components/product/ListProduct/ListProduct";
+import ListProduct from "@components/Home/ListProduct/ListProduct";
 
 import { getProducts } from "@/apis/productService";
 import HeroBanner from "@components/Home/HeroBanner/HeroBanner";
