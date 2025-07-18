@@ -26,14 +26,14 @@ export default function Filter({
   const handleLayoutChange = (type) => setLayout(type);
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-b">
+    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-4 border-b">
       {/* Left: Sort + Layout Toggle */}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
         {/* Sort Dropdown */}
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="px-3 py-1 border rounded text-sm text-gray-700"
+          className="w-full sm:w-auto px-3 py-2 border rounded text-sm text-gray-700"
         >
           {SORT_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -66,14 +66,14 @@ export default function Filter({
       </div>
 
       {/* Right: Show Per Page */}
-      <div className="flex items-center gap-2 text-sm text-gray-700">
+      <div className="flex items-center gap-2 text-sm text-gray-700 w-full md:w-auto">
         <span>Show</span>
         <select
           value={limit}
           onChange={(e) =>
             setLimit(e.target.value === "all" ? "all" : Number(e.target.value))
           }
-          className="px-2 py-1 border rounded text-sm"
+          className="w-full sm:w-auto px-2 py-1 border rounded text-sm"
         >
           {SHOW_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
