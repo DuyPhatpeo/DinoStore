@@ -1,7 +1,10 @@
 import CountdownTimer from "@components/Home/CountdownTimer/CountdownTimer";
 import Banner from "@images/banner-countdown.webp";
+import { useNavigate } from "react-router-dom";
 
 export default function CountdownBanner() {
+  const navigate = useNavigate();
+
   const targetDate = new Date();
   targetDate.setHours(targetDate.getHours() + 22);
   targetDate.setMinutes(targetDate.getMinutes() + 53);
@@ -25,7 +28,10 @@ export default function CountdownBanner() {
         <h3 className="my-4 font-mono text-xl sm:text-2xl md:text-3xl">
           The Classics Make A Comeback
         </h3>
-        <button className="px-5 py-2 text-sm font-semibold text-black transition bg-white rounded hover:bg-gray-100">
+        <button
+          onClick={() => navigate("/shop")}
+          className="px-5 py-2 text-sm font-semibold text-black transition bg-white rounded hover:bg-gray-100"
+        >
           Buy now
         </button>
       </div>

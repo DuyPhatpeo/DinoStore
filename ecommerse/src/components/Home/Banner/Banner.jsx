@@ -1,7 +1,10 @@
 import bannerBg from "@images/banner-bg.png";
 import BoxIcon from "./BoxIcon/BoxIcon";
+import { useNavigate } from "react-router-dom";
 
 export default function Banner() {
+  const navigate = useNavigate();
+
   return (
     <section
       className="relative text-black bg-center bg-no-repeat bg-cover"
@@ -21,7 +24,10 @@ export default function Banner() {
             Make your celebrations even more special this year with something
             beautiful and timeless.
           </p>
-          <button className="px-6 sm:px-8 py-2.5 text-sm font-medium text-white transition duration-300 bg-black border border-black rounded hover:bg-transparent hover:text-black">
+          <button
+            onClick={() => navigate("/shop")}
+            className="px-6 sm:px-8 py-2.5 text-sm font-medium text-white transition duration-300 bg-black border border-black rounded hover:bg-transparent hover:text-black"
+          >
             Go to shop
           </button>
         </div>
