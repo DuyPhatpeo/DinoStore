@@ -17,6 +17,7 @@ export default function ListProduct({ data = [], layout = "grid" }) {
             name={product.name}
             price={formatPrice(product.price)}
             layout={layout}
+            size={product.size}
           />
         ))}
       </div>
