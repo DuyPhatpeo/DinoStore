@@ -3,7 +3,7 @@ import Header from "@components/Header/Header";
 import Footer from "@components/Footer/Footer";
 import MainLayout from "@components/Layout/Layout";
 import HeroBanner from "@components/Shop/HeroBanner/HeroBanner";
-import Breadcrumb from "@components/Shop/Breadcrumb/Breadcrumb";
+import Breadcrumb from "@components/common/Breadcrumb/Breadcrumb";
 import ListProduct from "@components/Shop/ListProduct/ListProduct";
 import Filter from "@components/Shop/Filter/Filter";
 import Pagination from "@components/Shop/Pagination/Pagination";
@@ -28,7 +28,7 @@ function Shop() {
     <>
       <Header />
       <MainLayout>
-        <Breadcrumb />
+        <Breadcrumb items={["Home", "Shop"]} />
         <HeroBanner />
         <Filter
           sort={sort}

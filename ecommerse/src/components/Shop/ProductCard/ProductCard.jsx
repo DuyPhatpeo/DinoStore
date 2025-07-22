@@ -86,14 +86,23 @@ export default function ProductCard({ src, preSrc, name, price, size = [] }) {
           {price ? `${price.toLocaleString("vi-VN")}₫` : "99.000₫"}
         </p>
 
-        {/* Nút Add to Cart */}
-        <button
-          onClick={handleAddToCart}
-          className="mt-1 text-[13px] font-medium bg-black text-white border border-black px-3 py-1 rounded transition 
-             hover:bg-white hover:text-black hover:border-black"
-        >
-          ADD TO CART
-        </button>
+        {/* Nút Select Size hoặc Add to Cart */}
+        {selectedSize ? (
+          <button
+            onClick={handleAddToCart}
+            className="mt-1 text-[13px] font-medium bg-black text-white border border-black px-3 py-1 rounded transition 
+      hover:bg-white hover:text-black hover:border-black"
+          >
+            ADD TO CART
+          </button>
+        ) : (
+          <button
+            className="mt-1 text-[13px] font-medium bg-white text-black border border-gray-400 px-3 py-1 rounded cursor-not-allowed"
+            disabled
+          >
+            SELECT OPTIONS
+          </button>
+        )}
       </div>
     </div>
   );

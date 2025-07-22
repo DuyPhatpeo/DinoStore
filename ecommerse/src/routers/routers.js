@@ -6,10 +6,6 @@ const routes = [
     component: lazy(() => import("@pages/Home/Home")),
   },
   {
-    path: "*",
-    component: lazy(() => import("@pages/NotFound/NotFound")),
-  },
-  {
     path: "/shop",
     component: lazy(() => import("@pages/Shop/Shop")),
   },
@@ -21,5 +17,14 @@ const routes = [
     path: "/contact",
     component: lazy(() => import("@pages/Contact/Contact")),
   },
+  {
+    path: "/product/:productId",
+    component: lazy(() => import("@pages/ProductDetail/ProductDetail")),
+  },
+  {
+    path: "*",
+    component: lazy(() => import("@pages/NotFound/NotFound")),
+  },
 ];
+
 export default routes;
