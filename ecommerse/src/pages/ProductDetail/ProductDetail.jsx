@@ -8,6 +8,7 @@ import Breadcrumb from "@components/common/Breadcrumb/Breadcrumb";
 import ProductGallery from "@components/ProductDetail/ProductGallery/ProductGallery";
 import ProductInfo from "@components/ProductDetail/ProductInfo/ProductInfo";
 import { getProductById } from "@/apis/productService";
+import RelatedProducts from "@components/ProductDetail/RelatedProducts/RelatedProducts";
 
 function ProductDetailPage() {
   const { productId } = useParams();
@@ -42,10 +43,16 @@ function ProductDetailPage() {
       <Header />
       <MainLayout>
         <Breadcrumb items={["Home", product?.name]} />
+
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProductGallery images={product.images} />
             <ProductInfo product={product} />
+          </div>
+
+          {/* Danh sách sản phẩm liên quan */}
+          <div className="mt-16">
+            <RelatedProducts productId={product._id} />
           </div>
         </div>
       </MainLayout>
