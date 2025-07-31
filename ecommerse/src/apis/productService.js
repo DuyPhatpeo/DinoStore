@@ -6,6 +6,7 @@ const getProducts = async (params = {}) => {
   return res.data;
 };
 
+// Lấy chi tiết sản phẩm theo ID
 const getProductById = async (productId) => {
   if (!productId) throw new Error("productId is required");
 
@@ -13,4 +14,12 @@ const getProductById = async (productId) => {
   return res.data;
 };
 
-export { getProducts, getProductById };
+// 🔥 Lấy sản phẩm liên quan theo ID
+const getRelatedProducts = async (productId) => {
+  if (!productId) throw new Error("productId is required");
+
+  const res = await axiosClient.get(`/related-products/${productId}`);
+  return res.data;
+};
+
+export { getProducts, getProductById, getRelatedProducts };
