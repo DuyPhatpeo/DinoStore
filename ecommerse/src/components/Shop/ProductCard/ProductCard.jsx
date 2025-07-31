@@ -83,7 +83,7 @@ export default function ProductCard({ src, preSrc, name, price, size = [] }) {
           {name || "Tên sản phẩm"}
         </h3>
         <p className="text-sm text-gray-700">
-          {price ? `${price.toLocaleString("vi-VN")}₫` : "99.000₫"}
+          {price ? `$${price.toLocaleString("en-US")}` : "$99.00"}
         </p>
 
         {/* Nút Select Size hoặc Add to Cart */}

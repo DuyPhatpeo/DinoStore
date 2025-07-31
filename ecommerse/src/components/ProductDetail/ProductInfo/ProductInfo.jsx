@@ -17,7 +17,7 @@ export default function ProductInfo({ product }) {
 
       {/* Giá */}
       <div className="text-xl font-semibold text-gray-800">
-        {product.price.toLocaleString("vi-VN")}₫
+        {"$" + product.price.toLocaleString("vi-VN")}
       </div>
 
       {/* Mô tả */}

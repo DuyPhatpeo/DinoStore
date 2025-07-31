@@ -46,7 +46,7 @@ export default function ProductCard({ src, preSrc, name, price, id }) {
             {name || "10K Yellow Gold"}
           </h3>
           <p className="text-[13px] text-gray-800 mt-1">
-            {price ? `${price}₫` : "99.000₫"}
+            {price ? `$${price}` : "$99.000"}
           </p>
         </div>
       </div>

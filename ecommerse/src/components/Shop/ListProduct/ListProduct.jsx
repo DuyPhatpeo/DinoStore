@@ -15,7 +15,7 @@ export default function ListProduct({ data = [], layout = "grid" }) {
             src={product.images?.[0]}
             preSrc={product.images?.[1] || product.images?.[0]}
             name={product.name}
-            price={formatPrice(product.price)}
+            price={product.price}
             layout={layout}
             size={product.size}
           />
@@ -23,9 +23,4 @@ export default function ListProduct({ data = [], layout = "grid" }) {
       </div>
     </div>
   );
-}
-
-function formatPrice(price) {
-  if (!price) return "0₫";
-  return `${price.toLocaleString("vi-VN")}₫`;
 }

@@ -11,16 +11,10 @@ export default function ListProduct({ data = [] }) {
             src={product.images?.[0]}
             preSrc={product.images?.[1] || product.images?.[0]}
             name={product.name}
-            price={formatPrice(product.price)}
+            price={product.price}
           />
         ))}
       </div>
     </div>
   );
-}
-
-// Hàm format giá theo định dạng VNĐ
-function formatPrice(price) {
-  if (!price) return "0₫";
-  return `${price.toLocaleString("vi-VN")}₫`;
 }
