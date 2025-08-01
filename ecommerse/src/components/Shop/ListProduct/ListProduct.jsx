@@ -12,6 +12,7 @@ export default function ListProduct({ data = [], layout = "grid" }) {
         {data.map((product) => (
           <ProductCard
             key={product._id}
+            id={product._id}
             src={product.images?.[0]}
             preSrc={product.images?.[1] || product.images?.[0]}
             name={product.name}
