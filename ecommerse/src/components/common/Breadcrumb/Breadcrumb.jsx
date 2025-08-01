@@ -6,7 +6,7 @@ export default function Breadcrumb({ items = [] }) {
   const lastIndex = items.length - 1;
 
   return (
-    <nav className="flex items-center flex-wrap gap-x-1 text-sm text-gray-500">
+    <nav className="flex items-center flex-wrap gap-x-1 text-base text-gray-500 mt-8">
       {items.map((label, index) => {
         const isLast = index === lastIndex;
         const path =
