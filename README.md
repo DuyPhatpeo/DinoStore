@@ -2,7 +2,7 @@
 
 Dino Store là một giao diện website thương mại điện tử hiện đại được xây dựng bằng **ReactJS** và **Tailwind CSS**, hướng đến trải nghiệm người dùng tốt trên mọi thiết bị.
 
-🔗 Truy cập bản demo: [https://dino-store.vercel.app/](https://dino-store.vercel.app/)
+🔗 Truy cập bản demo: [https://dinostorevn.vercel.app/](https://dinostorevn.vercel.app/)
 
 ---
 
