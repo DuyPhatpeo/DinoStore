@@ -19,7 +19,7 @@ const getRelatedProducts = async (productId) => {
   if (!productId) throw new Error("productId is required");
 
   const res = await axiosClient.get(`/related-products/${productId}`);
-  return res.data;
+  return res.data?.relatedProducts || [];
 };
 
 export { getProducts, getProductById, getRelatedProducts };

@@ -1,31 +1,36 @@
+import { useEffect, useState } from "react";
 import { getRelatedProducts } from "@apis/productService";
 import ProductCard from "@components/Home/ProductCard/ProductCard";
-import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function RelatedProducts({ productId }) {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Thêm loading
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!productId) return;
-    setLoading(true); // Khi thay đổi productId thì loading lại
+    setLoading(true);
     getRelatedProducts(productId)
       .then((res) => setProducts(res))
       .catch((err) => {
         console.error("Failed to fetch related products:", err);
-        setProducts([]); // fallback nếu lỗi
+        setProducts([]);
       })
       .finally(() => setLoading(false));
   }, [productId]);
 
   if (loading) return <div className="text-center py-6">Đang tải...</div>;
 
-  if (!products.length)
+  if (!products.length) {
     return (
       <div className="text-center py-6 text-gray-500">
         Không có sản phẩm liên quan
       </div>
     );
+  }
 
   return (
     <div className="mt-10">
@@ -33,16 +38,34 @@ export default function RelatedProducts({ productId }) {
         Related Products
       </h2>
 
-      {/* Danh sách nằm ngang, có trượt */}
-      <div className="overflow-x-auto">
-        <div className="flex gap-4 w-max px-2 pb-2 scroll-smooth">
-          {products.map((product) => (
-            <div key={product._id} className="w-[180px] shrink-0">
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        spaceBetween={20}
+        slidesPerView={4} // hiện 4 sản phẩm 1 hàng
+        loop={true}
+        className="px-6 text-black"
+      >
+        {products.map((product) => (
+          <SwiperSlide key={product._id}>
+            <ProductCard
+              id={product._id}
+              name={product.name}
+              price={product.price}
+              src={
+                Array.isArray(product.images)
+                  ? product.images[0]
+                  : product.images
+              }
+              preSrc={
+                Array.isArray(product.images)
+                  ? product.images[1] || product.images[0]
+                  : product.images
+              }
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
