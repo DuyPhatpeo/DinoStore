@@ -1,17 +1,12 @@
-# 🦖 Dino Store
+# React + Vite
 
-Dino Store là một giao diện website thương mại điện tử hiện đại được xây dựng bằng **ReactJS** và **Tailwind CSS**, hướng đến trải nghiệm người dùng tốt trên mọi thiết bị.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-🔗 Truy cập bản demo: [https://dinostorevn.vercel.app/](https://dinostorevn.vercel.app/)
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🛠️ Công nghệ sử dụng
+## Expanding the ESLint configuration
 
-- ⚛️ **ReactJS** – thư viện xây dựng UI mạnh mẽ
-- 🎨 **Tailwind CSS** – framework CSS tiện dụng, utility-first
-- 💼 **React Icons** – bộ icon đẹp, dễ dùng
-- ⚡ **Vite** – công cụ build siêu nhanh
-- ☁️ **Vercel** – triển khai serverless dễ dàng
-
----
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
