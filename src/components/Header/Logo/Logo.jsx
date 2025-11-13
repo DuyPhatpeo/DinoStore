@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
 import logo from "@images/logo-dino-store.png";
 
 export default function Logo() {
   return (
-    <div className="flex items-center space-x-2">
+    <Link
+      to="/"
+      className="flex items-center space-x-2 hover:opacity-80 transition"
+    >
       <img
         src={logo}
         alt="Dino Store Logo"
@@ -11,6 +15,6 @@ export default function Logo() {
       <span className="hidden text-2xl font-semibold text-gray-800 sm:inline">
         Dino Store
       </span>
-    </div>
+    </Link>
   );
 }
